@@ -25,3 +25,6 @@ replay_pid*
 
 # Execution and local application build folder
 application/target/
+
+# NetBeans IDE configuration
+nb-configuration.xml
