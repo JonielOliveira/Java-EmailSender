@@ -89,6 +89,7 @@
                     <supportUrl></supportUrl>
                     <stayAlive>false</stayAlive>
                     <manifest></manifest>
+                    <icon>src/main/resources/icons/send-email.ico</icon>
                     <versionInfo>
                         <fileVersion>1.0.0.0</fileVersion>
                         <txtFileVersion>1.0.0.0</txtFileVersion>
