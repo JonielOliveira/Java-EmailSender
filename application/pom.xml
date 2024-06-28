@@ -1,0 +1,121 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.emailsender</groupId>
+    <artifactId>emailsender</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            
+            <!-- Maven Assembly Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>io.emailsender.app.Main</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+                       
+            <!-- Launch4j Maven Plugin -->
+            <plugin>
+                <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                <artifactId>launch4j-maven-plugin</artifactId>
+                <version>1.7.25</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>launch4j</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <outfile>target/EmailSender.exe</outfile>
+                    <jar>target/emailsender-1.0-SNAPSHOT-jar-with-dependencies.jar</jar>
+                    <dontWrapJar>false</dontWrapJar>
+                    <headerType>console</headerType>
+                    <errTitle>Minha Aplicacao Error</errTitle>
+                    <classPath>
+                        <mainClass>io.emailsender.app.Main</mainClass>
+                        <addDependencies>true</addDependencies>
+                    </classPath>
+                    <cmdLine></cmdLine>
+                    <priority>normal</priority>
+                    <downloadUrl>http://java.com/download</downloadUrl>
+                    <supportUrl></supportUrl>
+                    <stayAlive>false</stayAlive>
+                    <manifest></manifest>
+                    <versionInfo>
+                        <fileVersion>1.0.0.0</fileVersion>
+                        <txtFileVersion>1.0.0.0</txtFileVersion>
+                        <productVersion>1.0.0.0</productVersion>
+                        <txtProductVersion>1.0.0.0</txtProductVersion>
+                        <fileDescription>E-mail Sender</fileDescription>
+                        <productName>EmailSender</productName>
+                        <companyName>GitHub:JonielOliveira</companyName>
+                        <copyright>All rights reserved 2024-2024</copyright>
+                        <internalName>EmailSender</internalName>
+                        <originalFilename>EmailSender.exe</originalFilename>
+                        <language>PORTUGUESE_BRAZIL</language>
+                    </versionInfo>
+                    <jre>
+                        <path>C:\Program Files\Java\jre-1.8</path>
+                        <minVersion>1.8</minVersion>
+                        <maxVersion></maxVersion>
+                        <bundledJre64Bit>false</bundledJre64Bit>
+                        <bundledJreAsFallback>false</bundledJreAsFallback>
+                        <runtimeBits>64/32</runtimeBits>
+                        <initialHeapSize></initialHeapSize>
+                        <maxHeapSize></maxHeapSize>
+                    </jre>
+                </configuration>
+            </plugin>  
+        </plugins>
+    </build>
+    <name>EmailSender</name>
+    <description>Small application that sends a simple email.</description>
+</project>
